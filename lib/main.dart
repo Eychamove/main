@@ -14,10 +14,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Bioprocess Lexicon',
-      theme: ThemeData(primarySwatch: Colors.green),
-      home: const BioprocessApp(),
-    );
+        title: 'Bioprocess Lexicon',
+        theme: ThemeData(primarySwatch: Colors.green),
+        home: const BioprocessApp());
   }
 }
 
@@ -57,13 +56,12 @@ class _BioprocessLex extends State<BioprocessApp> {
             style: TextStyle(fontWeight: FontWeight.bold)),
         titleTextStyle: const TextStyle(fontSize: 25),
         actions: <Widget>[
-          _selectedIndex == 0
-              ? IconButton(
-                  icon: const Icon(Icons.search),
-                  onPressed: () {
-                    showSearch(context: context, delegate: DataSearch());
-                  })
-              : Container(),
+          if (_selectedIndex == 0)
+            IconButton(
+                icon: const Icon(Icons.search),
+                onPressed: () {
+                  showSearch(context: context, delegate: DataSearch());
+                }),
         ],
       ),
       body: _widgetOptions.elementAt(_selectedIndex),

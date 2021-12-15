@@ -19,12 +19,14 @@ class _LexEintragPageState extends State<LexEintragPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text(widget.lexikonEintrag.title,
-              style: const TextStyle(fontSize: 25)),
-        ),
-        body: ListView(padding: const EdgeInsets.all(16), children: [
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(widget.lexikonEintrag.title,
+            style: const TextStyle(fontSize: 25)),
+      ),
+      body: ListView(
+        padding: const EdgeInsets.all(16),
+        children: [
           RichText(
             textAlign: TextAlign.center,
             text: const TextSpan(
@@ -50,60 +52,62 @@ class _LexEintragPageState extends State<LexEintragPage> {
                   TextSpan(text: widget.lexikonEintrag.def)
                 ]),
           ),
-          if (widget.lexikonEintrag.keyPoints[0] != '')
+          if (widget.lexikonEintrag.keyPoints != null) ...[
             const Divider(
               height: 30,
               thickness: 5,
             ),
-          if (widget.lexikonEintrag.keyPoints[0] != '')
             RichText(
               textAlign: TextAlign.center,
               text: TextSpan(
                   style: const TextStyle(color: Colors.black, fontSize: 23),
                   children: <TextSpan>[
                     (TextSpan(
-                        text: widget.lexikonEintrag.keyPoints[0],
+                        text: widget.lexikonEintrag.keyPoints![0],
                         style: const TextStyle(fontWeight: FontWeight.bold)))
                   ]),
             ),
-          if (widget.lexikonEintrag.keyPoints[0] != '') const Divider(),
-          if (widget.lexikonEintrag.keyPoints[0] != '')
-            for (int i = 1; i < widget.lexikonEintrag.keyPoints.length; i += 2)
+            const Divider(),
+            for (int i = 1; i < widget.lexikonEintrag.keyPoints!.length; i += 2)
               RichText(
                 textAlign: TextAlign.start,
                 text: TextSpan(
                     style: const TextStyle(color: Colors.black, fontSize: 22),
                     children: <TextSpan>[
                       TextSpan(
-                          text: widget.lexikonEintrag.keyPoints[i],
+                          text: widget.lexikonEintrag.keyPoints![i],
                           style: const TextStyle(fontWeight: FontWeight.bold)),
-                      TextSpan(text: widget.lexikonEintrag.keyPoints[i + 1])
+                      TextSpan(text: widget.lexikonEintrag.keyPoints![i + 1])
                     ]),
               ),
-          if (widget.lexikonEintrag.image != '')
+          ],
+          if (widget.lexikonEintrag.image != null) ...[
             const Divider(
               height: 30,
               thickness: 5,
             ),
-          if (widget.lexikonEintrag.image != null)
-            Image.asset(widget.lexikonEintrag.image!),
-          if (widget.lexikonEintrag.imagesub != '')
-            Text(widget.lexikonEintrag.imagesub ?? '')
-        ]));
+            if (widget.lexikonEintrag.image != null)
+              Image.asset(widget.lexikonEintrag.image!),
+          ],
+          if (widget.lexikonEintrag.imagesub != null)
+            Text(widget.lexikonEintrag.imagesub!)
+        ],
+      ),
+    );
   }
 }
 
 class LexikonEintrag {
   final String title;
   final String def;
-  final List<String> keyPoints;
+  final List<String>? keyPoints;
   final String? image;
   final String? imagesub;
 
   LexikonEintrag(
       {required this.title,
       required this.def,
-      required this.keyPoints,
+      this.keyPoints,
       this.image,
       this.imagesub});
 
