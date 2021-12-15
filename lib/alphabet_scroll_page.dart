@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:azlistview/azlistview.dart';
 import 'package:bioprocess_lexicon/lex_eintrag.dart';
 
+// TODO: Alphabetische Sortierung wieder zum laufen bringen
+
 class LexiList {
   static List<String> obj = [
     'Affinity Chromatography',
