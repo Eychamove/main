@@ -1,4 +1,6 @@
+import 'package:bioprocess_lexicon/classes/quiz_questions.dart';
 import 'package:bioprocess_lexicon/quiz_page.dart';
+import 'package:bioprocess_lexicon/widgets/question_view_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bioprocess_lexicon/alphabet_scroll_page.dart';
@@ -46,7 +48,13 @@ class _BioprocessLex extends State<BioprocessApp> {
         },
         items: LexikonEintrag.lexikonEintraege,
       ),
-      const CooleQuizPage(),
+      QuestionScreen(
+          question: QuizQuestion(answers: [
+        Anwer(body: "Antwort 1", correct: false),
+        Anwer(body: "Antwort 2", correct: true),
+        Anwer(body: "Antwort 3", correct: false),
+        Anwer(body: "Antwort 4", correct: false)
+      ], questionBody: "Wie heißt die Mama von Niki Lauda")),
     ];
 
     return Scaffold(
