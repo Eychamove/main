@@ -1,5 +1,6 @@
 import 'package:bioprocess_lexicon/classes/quiz_questions.dart';
 import 'package:bioprocess_lexicon/quiz_page.dart';
+import 'package:bioprocess_lexicon/screens/quiz_screen.dart';
 import 'package:bioprocess_lexicon/widgets/question_view_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -48,7 +49,7 @@ class _BioprocessLex extends State<BioprocessApp> {
         },
         items: LexikonEintrag.lexikonEintraege,
       ),
-      QuestionScreen(
+      QuizScreen(
           question: QuizQuestion(answers: [
         Anwer(body: "Antwort 1", correct: false),
         Anwer(body: "Antwort 2", correct: true),
